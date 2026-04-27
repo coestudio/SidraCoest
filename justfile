@@ -1,6 +1,5 @@
 set windows-shell := ["powershell.exe", "-NoLogo", "-Command"]
 
-
 CHATWOOT_HUB_URL := "https://hub.2.chatwoot.com/events"
 CHATWOOT_REPO := "https://github.com/coestudio/chatwoot.git"
 CHATWOOT_RAW_BASE := "https://raw.githubusercontent.com/coestudio/chatwoot"
@@ -12,6 +11,17 @@ clear:
 
 default:
     @just --list
+
+build:
+    #!/usr/bin/env bash
+    set -e
+    clear
+    echo "📦 Construindo a aplicação..."
+    bundle exec vite build
+    echo "✅ Aplicação construída com sucesso!"
+    bundle exec rails assets:precompile
+    echo "✅ Aplicação construída com sucesso!"
+    clear
 
 deploy:
     #!/usr/bin/env bash
@@ -27,6 +37,6 @@ install-cli:
     #!/usr/bin/env bash
     set -e
     echo "📥 Instalando cwctl..."
-    wget "{{CHATWOOT_RAW_BASE}}/{{CHATWOOT_BRANCH}}/integration/setup.sh" -O /usr/local/bin/cwctl > /dev/null 2>&1 && chmod +x /usr/local/bin/cwctl
+    wget "{{ CHATWOOT_RAW_BASE }}/{{ CHATWOOT_BRANCH }}/integration/setup.sh" -O /usr/local/bin/cwctl > /dev/null 2>&1 && chmod +x /usr/local/bin/cwctl
     echo "✅ cwctl instalado com sucesso!"
     clear

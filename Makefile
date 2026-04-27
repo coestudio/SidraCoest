@@ -1,6 +1,9 @@
 # Variables
+SHELL := /bin/bash
+export PATH := $(PATH):/usr/local/bin
+
 APP_NAME := chatwoot
-RAILS_ENV ?= development
+RAILS_ENV := RAILS_ENV=development OVERMIND_SOCKET=/tmp/sidra.sock overmind start -f Procfile.dev
 
 # Targets
 setup:
@@ -60,7 +63,7 @@ debug:
 debug_worker:
 	overmind connect worker
 
-docker: 
+docker:
 	docker build -t $(APP_NAME) -f ./docker/Dockerfile .
 
 .PHONY: setup db_create db_migrate db_seed db_reset db console server burn docker run force_run force_run_tunnel debug debug_worker
