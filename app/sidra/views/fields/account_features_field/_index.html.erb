@@ -1,0 +1,5 @@
+<%
+  all_features = SuperAdmin::AccountFeaturesHelper.filtered_features(field.data)
+  count = all_features.count { |_key, val| val }
+%>
+<span class="text-sm text-slate-700"><%= count %> enabled</span>

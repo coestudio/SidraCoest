@@ -1,0 +1,15 @@
+<%
+  all_features = SuperAdmin::AccountFeaturesHelper.filtered_features(field.data)
+%>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+  <% all_features.each do |(feature_key, display_name), enabled| %>
+    <span class="flex items-center gap-2 text-sm">
+      <% if enabled %>
+        <span class="inline-block w-2 h-2 rounded-full bg-green-500"></span>
+      <% else %>
+        <span class="inline-block w-2 h-2 rounded-full bg-slate-300"></span>
+      <% end %>
+      <span class="<%= enabled ? 'text-slate-800 font-medium' : 'text-slate-400' %>"><%= display_name %></span>
+    </span>
+  <% end %>
+</div>
