@@ -1,3 +1,4 @@
+
 # This file contains all the installation wide configuration which controls various settings in Chatwoot
 # This is internal config and should not be modified by the user directly in database
 # Chatwoot might override and modify these values during the upgrade process

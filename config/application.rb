@@ -46,6 +46,8 @@ module Chatwoot
     # rubocop:enable Rails/FilePath
     # Add enterprise views to the view paths
     config.paths['app/views'].unshift('enterprise/app/views')
+    # Add Sidra overrides to the view paths
+    config.paths['app/views'].unshift('app/sidra/views')
 
     # Load enterprise initializers alongside standard initializers
     enterprise_initializers = Rails.root.join('enterprise/config/initializers')
